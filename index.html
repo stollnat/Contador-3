@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(106, 210, 236);
+            color: black;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+        }
+        section {
+            background-color: rgb(75, 158, 190);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        button {
+            font-size: 20px;
+            background-color: rgb(133, 231, 255);
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+        p {
+            font-size: 200px;
+        }
+        h1 {
+            font-size: 50px;
+        }
+
+        img {
+            position: fixed;
+            bottom: -140px;
+            left: -29px;
+            height: 800px;
+        }
+
+        @media (max-width: 600px) {
+            img {
+                width: 100px;
+                max-height: 30vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Contador</h1>
+        <p>0</p>
+
+        <button onclick="aumentar()">Mais</button>
+        <button onclick="zerar()">Zerar</button>
+        <button onclick="diminuir()">Menos</button>
+    </section>
+    <script>
+        let numero = 0
+
+        function aumentar() {
+            numero++
+            render()
+        }
+        function zerar() {
+            numero = numero - numero
+            render()
+        }
+        function diminuir() {
+            numero--
+            render()
+        }
+        function render() {
+            const p = document.querySelector("p")
+            p.innerText = numero
+        }
+
+        render()
+    </script>
+    <img src="img/download-removebg-preview.png" alt="rato">
+</body>
+
+</html>
