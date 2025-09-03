@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador</title>
-
     <style>
         * {
             margin: 0;
@@ -13,53 +12,42 @@
         }
 
         body {
-            background-color: rgb(106, 210, 236);
+            background-color: rgb(134, 221, 255);
             color: black;
+            min-height: 100vh;
             display: grid;
             place-items: center;
-            min-height: 100vh;
-            overflow-y: hidden;
         }
+
         section {
-            background-color: rgb(75, 158, 190);
+            background-color: rgb(12, 90, 104);
+            color: white;
             padding: 30px;
             text-align: center;
             border-radius: 10px;
         }
+
         button {
             font-size: 20px;
-            background-color: rgb(133, 231, 255);
-            border: 2px solid white;
+            background-color: rgb(0, 52, 59);
+            color: white;
             border-radius: 5px;
+            border: none;
         }
+
         p {
-            font-size: 200px;
+            font-size: 150px;
         }
+
         h1 {
-            font-size: 50px;
-        }
-
-        img {
-            position: fixed;
-            bottom: -140px;
-            left: -29px;
-            height: auto;
-            max-width: 100%;
-            display: block;
-        }
-
-        @media (max-width: 600px) {
-            img {
-                width: 100px;
-                max-height: 30vh;
-            }
+            font-size: 30px;
         }
     </style>
 </head>
 
 <body>
     <section>
-        <h1>Contador</h1>
+        <h1>Contador <span></span></h1>
         <p>0</p>
 
         <button onclick="aumentar()">Mais</button>
@@ -72,23 +60,37 @@
         function aumentar() {
             numero++
             render()
+
+            
+            if (numero % 10 === 0) {
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                origin: { y: 0.6 },
+                colors: ['#0000FF', '#1E90FF', '#00BFFF', '#87CEFA']
+            });
         }
-        function zerar() {
-            numero = numero - numero
-            render()
         }
         function diminuir() {
             numero--
             render()
         }
+        function zerar() {
+            numero = numero - numero
+            render()
+        }
         function render() {
             const p = document.querySelector("p")
             p.innerText = numero
+
+            const span = document.querySelector("span")
+            span.innerText = numero
+
         }
 
         render()
     </script>
-    <img src="img/download-removebg-preview.png" alt="rato">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>
